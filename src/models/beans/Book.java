@@ -23,6 +23,14 @@ public class Book {
         this.year = year;
     }
 
+    public Book(int bookId, String title, int editionNumber, int year, int stock) {
+        this.bookId = bookId;
+        this.title = title;
+        this.editionNumber = editionNumber;
+        this.year = year;
+        this.stock = stock;
+    }
+
     public int getBookId() {
         return bookId;
     }
