@@ -10,7 +10,7 @@ public class Menu {
         System.out.println("6- Save data from database to CSV file");
     }
 
-    public static void book() {
+    public static void books() {
         System.out.println("1- List books");
         System.out.println("2- Fill the stock of a book");
         System.out.println("3- Add a book");
@@ -18,7 +18,7 @@ public class Menu {
         System.out.println("5- Delete a book");
     }
 
-    public static void student() {
+    public static void students() {
         System.out.println("1- List students");
         System.out.println("2- Add a student");
         System.out.println("3- Edit a student");
