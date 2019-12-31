@@ -70,4 +70,15 @@ public class Book {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", editionNumber=" + editionNumber +
+                ", year=" + year +
+                ", stock=" + stock +
+                '}';
+    }
 }
