@@ -1,12 +1,14 @@
 package models.beans;
 
+import java.util.ArrayList;
+
 public class Student {
     private int studentId;
     private String fname;
     private String lname;
     private String studyPath;
     private String cin;
-    private Book[] books;
+    private ArrayList<Book> books;
 
     public Student() {
     }
@@ -66,11 +68,22 @@ public class Student {
         this.cin = cin;
     }
 
-    public Book[] getBooks() {
+    public ArrayList<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Book[] books) {
+    public void setBooks(ArrayList<Book> books) {
         this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", studyPath='" + studyPath + '\'' +
+                ", cin='" + cin + '\'' +
+                '}';
     }
 }
