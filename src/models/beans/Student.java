@@ -73,4 +73,15 @@ public class Student {
     public void setBooks(Book[] books) {
         this.books = books;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", studyPath='" + studyPath + '\'' +
+                ", cin='" + cin + '\'' +
+                '}';
+    }
 }
