@@ -25,6 +25,17 @@ public class StudentDao {
         return num > 0;
     }
 
+    public static Student get(int id) throws SQLException {
+        Student student = null;
+        PreparedStatement pst = DBManager.getInstance().prepare("SELECT student_id, first_name, last_name, study_path, cin FROM students WHERE student_id=?");
+        pst.setInt(1, id);
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            student = new Student(rs.getInt("student_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("study_path"), rs.getString("cin"));
+        }
+        return student;
+    }
+
     public static ArrayList<Student> list() throws SQLException {
         ArrayList<Student> students = new ArrayList<>();
 
