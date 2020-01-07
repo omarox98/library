@@ -24,6 +24,17 @@ public class BookDao {
         return num > 0;
     }
 
+    public static Book get(int id) throws SQLException {
+        Book book = null;
+        PreparedStatement pst = DBManager.getInstance().prepare("SELECT book_id, title, edition_number, date_of_appearance, stock FROM books WHERE book_id=?");
+        pst.setInt(1, id);
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            book = new Book(rs.getInt("book_id"), rs.getString("title"), rs.getInt("edition_number"), rs.getInt("date_of_appearance"), rs.getInt("stock"));
+        }
+        return book;
+    }
+
     public static ArrayList<Book> list() throws SQLException {
         ArrayList<Book> books = new ArrayList<>();
 
