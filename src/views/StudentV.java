@@ -19,6 +19,7 @@ public class StudentV {
     }
 
     public static Student add() {
+        sc.nextLine();
         Student student = new Student();
         System.out.println("Enter first name");
         student.setFname(sc.nextLine());
@@ -32,6 +33,7 @@ public class StudentV {
     }
 
     public static void update(Student student) {
+        sc.nextLine();
         System.out.println("Enter first name, or 0 in order not to change");
         String fname = sc.nextLine();
         System.out.println("Enter last name, or 0 in order not to change");
