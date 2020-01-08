@@ -36,9 +36,12 @@ public class BorrowC {
                             return;
                         }
                     }
-                    BorrowDao.borrow(student, bookId);
-                    book.setStock(book.getStock() - 1);
-                    BookDao.update(book);
+                    if (BorrowDao.borrow(student, bookId)) {
+                        book.setStock(book.getStock() - 1);
+                        BookDao.update(book);
+                    }
+
+
                 } else {
                     System.out.println("Stock out");
                 }
@@ -61,10 +64,11 @@ public class BorrowC {
             System.out.println("Choose the book id to submit");
             BookV.list(student.getBooks());
             int bookId = sc.nextInt();
-            BorrowDao.submit(student, bookId);
-            Book book = BookDao.get(bookId);
-            book.setStock(book.getStock() + 1);
-            BookDao.update(book);
+            if (BorrowDao.submit(student, bookId)) {
+                Book book = BookDao.get(bookId);
+                book.setStock(book.getStock() + 1);
+                BookDao.update(book);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

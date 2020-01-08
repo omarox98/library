@@ -3,6 +3,7 @@ package init;
 
 import controllers.BookC;
 import controllers.BorrowC;
+import controllers.CSV;
 import controllers.StudentC;
 import views.Menu;
 
@@ -25,10 +26,10 @@ public class App {
                     BorrowC.submit();
                     break;
                 case 5:
-
+                    CSV.csvToDB();
                     break;
                 case 6:
-
+                    CSV.dbToCSV();
                     break;
                 case 0:
                     break;
