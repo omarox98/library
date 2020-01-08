@@ -26,6 +26,7 @@ public class BookV {
 
     public static Book add() {
         Book book = new Book();
+        sc.nextLine();
         System.out.println("Enter title");
         book.setTitle(sc.nextLine());
         System.out.println("Enter the edition number");
@@ -36,6 +37,7 @@ public class BookV {
     }
 
     public static void update(Book book) {
+        sc.nextLine();
         System.out.println("1- Enter title, or 0 in order not to change");
         String title = sc.nextLine();
         System.out.println("2- Enter the edition number, or 0 in order not to change");

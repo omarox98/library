@@ -11,6 +11,7 @@ public class Student {
     private ArrayList<Book> books;
 
     public Student() {
+        this.books = new ArrayList<>();
     }
 
     public Student(String fname, String lname, String studyPath, String cin) {
@@ -18,6 +19,7 @@ public class Student {
         this.lname = lname;
         this.studyPath = studyPath;
         this.cin = cin;
+        this.books = new ArrayList<>();
     }
 
     public Student(int studentId, String fname, String lname, String studyPath, String cin) {
@@ -26,6 +28,7 @@ public class Student {
         this.lname = lname;
         this.studyPath = studyPath;
         this.cin = cin;
+        this.books = new ArrayList<>();
     }
 
     public int getStudentId() {

@@ -1,38 +1,35 @@
 package controllers;
 
-import models.beans.Book;
-import models.dao.BookDao;
-import views.BookV;
+import models.beans.Student;
+import models.dao.StudentDao;
 import views.Menu;
+import views.StudentV;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class BookC {
+public class StudentC {
     private static Scanner sc = new Scanner(System.in);
 
-    private BookC() {
+    private StudentC() {
     }
 
     public static void run() {
         int choice;
         do {
-            choice = Menu.books();
+            choice = Menu.students();
             switch (choice) {
                 case 1:
                     list();
                     break;
                 case 2:
-                    fill();
-                    break;
-                case 3:
                     add();
                     break;
-                case 4:
+                case 3:
                     update();
                     break;
-                case 5:
+                case 4:
                     delete();
                     break;
                 case 0:
@@ -47,38 +44,21 @@ public class BookC {
 
     public static void list() {
         try {
-            ArrayList<Book> books = BookDao.list();
+            ArrayList<Student> students = StudentDao.list();
             System.out.println("---------------------------------");
-            BookV.list(books);
+            StudentV.list(students);
             System.out.println("---------------------------------");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    private static void fill() {
-        System.out.println("---------------------------------");
-        System.out.println("Choose a book to fill");
-        list();
-        int bookId = sc.nextInt();
-        try {
-            Book book = BookDao.get(bookId);
-            BookV.fill(book);
-            if (BookDao.update(book))
-                System.out.println("Filled out");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println("---------------------------------");
     }
 
     private static void add() {
         System.out.println("---------------------------------");
-
-        Book book = BookV.add();
+        Student student = StudentV.add();
         try {
-            if (BookDao.create(book))
-                System.out.println("Created");
+            if (StudentDao.create(student))
+                System.out.println("Added");
             System.out.println("---------------------------------");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -87,14 +67,13 @@ public class BookC {
 
     private static void update() {
         System.out.println("---------------------------------");
-        System.out.println("Choose a book to modify");
+        System.out.println("Choose a student to modify");
         list();
-        int bookId = sc.nextInt();
-
+        int studentId = sc.nextInt();
         try {
-            Book book = BookDao.get(bookId);
-            BookV.update(book);
-            if (BookDao.update(book))
+            Student student = StudentDao.get(studentId);
+            StudentV.update(student);
+            if (StudentDao.update(student))
                 System.out.println("Modified");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,12 +83,12 @@ public class BookC {
 
     private static void delete() {
         System.out.println("---------------------------------");
-        System.out.println("Choose a book to delete");
+        System.out.println("Choose a Student to delete");
         list();
-        int bookId = sc.nextInt();
+        int studentId = sc.nextInt();
         try {
-            Book book = BookDao.get(bookId);
-            if (BookDao.delete(book))
+            Student student = StudentDao.get(studentId);
+            if (StudentDao.delete(student))
                 System.out.println("Deleted");
         } catch (SQLException e) {
             e.printStackTrace();
