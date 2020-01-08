@@ -2,6 +2,7 @@ package models.dao;
 
 import init.DBManager;
 import models.beans.Book;
+import models.beans.Borrow;
 import models.beans.Student;
 
 import java.sql.PreparedStatement;
@@ -22,6 +23,16 @@ public class BorrowDao {
             books.add(BookDao.get(rs.getInt("book_id")));
         }
         return books;
+    }
+
+    public static ArrayList<Borrow> list() throws SQLException {
+        ArrayList<Borrow> borrows = new ArrayList<>();
+        PreparedStatement pst = DBManager.getInstance().prepare("SELECT book_id, student_id FROM borrow");
+        ResultSet rs = pst.executeQuery();
+        while (rs.next()) {
+            borrows.add(new Borrow(rs.getInt("book_id"), rs.getInt("student_id")));
+        }
+        return borrows;
     }
 
     public static boolean borrow(Student student, int book) throws SQLException {

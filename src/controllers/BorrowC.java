@@ -36,9 +36,12 @@ public class BorrowC {
                             return;
                         }
                     }
-                    BorrowDao.borrow(student, bookId);
-                    book.setStock(book.getStock() - 1);
-                    BookDao.update(book);
+                    if (BorrowDao.borrow(student, bookId)) {
+                        book.setStock(book.getStock() - 1);
+                        BookDao.update(book);
+                    }
+
+
                 } else {
                     System.out.println("Stock out");
                 }
